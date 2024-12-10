@@ -6,6 +6,7 @@ public abstract class Room {
 	private int price;
 	private boolean availability;
 	private String type;
+	private String startDate, endDate;
 	
 	public Room(String roomId, String facility, boolean availability) {
 		super();
@@ -42,9 +43,11 @@ public abstract class Room {
 		return type;
 	}
 
-	public void book() {
+	public void book(String startDate, String endDate) {
 		if (availability) {
             availability = false;
+            this.startDate = startDate;
+            this.endDate = endDate;
             System.out.println("Room " + roomId + " has been successfully booked.");
         } else {
             System.out.println("Room " + roomId + " is not available for booking.");
@@ -66,6 +69,14 @@ public abstract class Room {
             room.displayRoomDetails();
             System.out.println("-------------------------------------------");
         }
+	}
+	
+	public void displayBookedRooms() {
+		System.out.println("Room ID: " + roomId);
+        System.out.println("Room Type: " + type);
+        System.out.println("Features: " + facility);
+        System.out.println("Price: Rp" + price + " per night");
+        System.out.println("Booking date : "+ startDate + " until " + endDate);
 	}
 	
 }

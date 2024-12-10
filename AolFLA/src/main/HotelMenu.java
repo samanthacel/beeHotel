@@ -6,6 +6,9 @@ import rooms.DeluxeRoom;
 import rooms.Room;
 import rooms.StandardRoom;
 import rooms.SuperiorRoom;
+import transactions.Credit;
+import transactions.Debit;
+import transactions.Gopay;
 
 public class HotelMenu {
     private Room[] rooms;
@@ -58,14 +61,15 @@ public class HotelMenu {
         displayRoomsByType(choice);
     }
 
-    public void bookRoom(String roomId) {
+    public void bookRoom(String roomId, String startDate, String endDate, String payment) {
         for (Room room : rooms) {
             if (room.getRoomId().equalsIgnoreCase(roomId)) {
                 if (!room.isAvailable()) {
                     System.out.println("Room " + roomId + " is already booked.");
                     return;
                 }
-                room.book();
+                payRoom(room, payment);
+                room.book(startDate, endDate);
                 bookedRooms.add(room); 
                 return;
             }
@@ -73,6 +77,19 @@ public class HotelMenu {
         System.out.println("Room ID not found.");
     }
 
+    public void payRoom(Room room, String payment) {
+    	if (payment.equalsIgnoreCase("credit")) {
+    		Credit credit = new Credit();
+    		credit.pay(room);
+    	}else if (payment.equalsIgnoreCase("debit")) {
+    		Debit debit = new Debit();
+    		debit.pay(room);
+    	}else if (payment.equals("gopay")) {
+    		Gopay gopay = new Gopay();
+    		gopay.pay(room);
+    	}
+    }
+    
     public void displayRoomsByType(int choice) {
         String selectedType = "";
         switch (choice) {
@@ -106,10 +123,10 @@ public class HotelMenu {
             System.out.println("You haven't booked any rooms yet.");
         } else {
             System.out.println("===========================================");
-            System.out.println("            YOUR ORDER");
+            System.out.println("                YOUR ORDER");
             System.out.println("===========================================");
             for (Room room : bookedRooms) {
-                room.displayRoomDetails();
+            	room.displayBookedRooms();
                 System.out.println("-------------------------------------------");
             }
         }

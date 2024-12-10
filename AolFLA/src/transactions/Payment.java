@@ -1,5 +1,7 @@
 package transactions;
 
+import rooms.Room;
+
 public interface Payment {
-	public void Pay();
+	public void pay(Room room);
 }

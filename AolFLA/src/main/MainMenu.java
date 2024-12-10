@@ -92,7 +92,14 @@ public class MainMenu {
                 case 2:
                     System.out.print("Enter Room ID to book: ");
                     String roomId = sc.nextLine();
-                    hotelMenu.bookRoom(roomId);
+                    System.out.print("Enter start date (dd-mm-yyyy): ");
+                    String startDate = sc.nextLine();
+                    System.out.print("Enter end date (dd-mm-yyyy): ");
+                    String endDate = sc.nextLine();
+                    System.out.print("Enter payment method [Credit|Debit|Gopay]: ");
+                    String payment = sc.nextLine();
+                    
+                    hotelMenu.bookRoom(roomId, startDate, endDate, payment);
                     break;
                 case 3:
                 	hotelMenu.displayYourOrder();
