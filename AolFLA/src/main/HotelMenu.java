@@ -2,6 +2,10 @@ package main;
 
 import java.util.ArrayList;
 
+import factories.DeluxeRoomFactory;
+import factories.RoomFactory;
+import factories.StandardRoomFactory;
+import factories.SuperiorRoomFactory;
 import rooms.DeluxeRoom;
 import rooms.Room;
 import rooms.StandardRoom;
@@ -36,14 +40,30 @@ public class HotelMenu {
     }
 
     private void initiateRoomData() {
-    	rooms = new Room[]{
-                new DeluxeRoom("D101", "King Bed, Wi-Fi, Air Conditioning", true),
-                new DeluxeRoom("D102", "Queen Bed, Wi-Fi, Air Conditioning", false),
-                new StandardRoom("S201", "Single Bed, Wi-Fi", true),
-                new StandardRoom("S202", "Single Bed, Wi-Fi", true),
-                new SuperiorRoom("SU301", "King Bed, Wi-Fi, Ocean View", true),
-                new SuperiorRoom("SU302", "King Bed, Wi-Fi, Ocean View",  false)
-            };
+        RoomFactory deluxeFactory = new DeluxeRoomFactory();
+        RoomFactory standardFactory = new StandardRoomFactory();
+        RoomFactory superiorFactory = new SuperiorRoomFactory();
+
+        Room prototypeDeluxe = deluxeFactory.createRoom("PrototypeD", "Prototype Facility", true);
+        Room prototypeStandard = standardFactory.createRoom("PrototypeS", "Prototype Facility", true);
+        Room prototypeSuperior = superiorFactory.createRoom("PrototypeSU", "Prototype Facility", true);
+
+        rooms = new Room[]{
+            cloneAndCustomize(prototypeDeluxe, "D101", "King Bed, Wi-Fi, Air Conditioning", true),
+            cloneAndCustomize(prototypeDeluxe, "D102", "Queen Bed, Wi-Fi, Air Conditioning", false),
+            cloneAndCustomize(prototypeStandard, "S201", "Single Bed, Wi-Fi", true),
+            cloneAndCustomize(prototypeStandard, "S202", "Single Bed, Wi-Fi", true),
+            cloneAndCustomize(prototypeSuperior, "SU301", "King Bed, Wi-Fi, Ocean View", true),
+            cloneAndCustomize(prototypeSuperior, "SU302", "King Bed, Wi-Fi, Ocean View", false)
+        };
+    }
+
+    private Room cloneAndCustomize(Room prototype, String roomId, String facility, boolean availability) {
+        Room clonedRoom = prototype.clone();
+        clonedRoom.setRoomId(roomId);
+        clonedRoom.setFacility(facility);
+        clonedRoom.setAvailability(availability);
+        return clonedRoom;
     }
 
     public void displayRoomTypes() {
@@ -61,6 +81,7 @@ public class HotelMenu {
         displayRoomsByType(choice);
     }
 
+    
     public void bookRoom(String roomId, String startDate, String endDate, String payment) {
         for (Room room : rooms) {
             if (room.getRoomId().equalsIgnoreCase(roomId)) {

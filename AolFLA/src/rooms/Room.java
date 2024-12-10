@@ -1,6 +1,6 @@
 package rooms;
 
-public abstract class Room {
+public abstract class Room implements Cloneable {
 	private String roomId;
 	private String facility;
 	private int price;
@@ -15,6 +15,29 @@ public abstract class Room {
 		this.availability = availability;
 	}
 	
+	@Override
+    public Room clone() {
+        try {
+            return (Room) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException("Cloning not supported for Room", e);
+        }
+    }
+	
+	public void setRoomId(String roomId) {
+		this.roomId = roomId;
+	}
+	
+	
+
+	public void setFacility(String facility) {
+		this.facility = facility;
+	}
+
+	public void setAvailability(boolean availability) {
+		this.availability = availability;
+	}
+
 	public void setPrice(int price) {
 		this.price = price;
 	}
