@@ -5,7 +5,7 @@ import java.util.Random;
 import main.MainMenu;
 import rooms.Room;
 
-public class Debit extends Transaction implements Payment{
+public class Debit extends Transaction {
 	private String virtualAccount;
 	
 	public static String generateVA() {

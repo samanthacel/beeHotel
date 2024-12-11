@@ -3,7 +3,7 @@ package transactions;
 import main.MainMenu;
 import rooms.Room;
 
-public class Gopay extends Transaction implements Payment {
+public class Gopay extends Transaction {
 	
 	private String phoneNumber;
 

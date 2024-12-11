@@ -2,7 +2,9 @@ package transactions;
 
 import java.util.ArrayList;
 
-public class Transaction {
+import rooms.Room;
+
+public class Transaction implements Payment {
 	protected ArrayList<Transaction> transactions = new ArrayList<>();
 	private String transactionId;
 	private boolean isPaid;
@@ -19,6 +21,12 @@ public class Transaction {
 
 	public void setPaid(boolean isPaid) {
 		this.isPaid = isPaid;
+	}
+
+	@Override
+	public void pay(Room room) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

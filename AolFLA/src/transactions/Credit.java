@@ -3,7 +3,7 @@ package transactions;
 import main.MainMenu;
 import rooms.Room;
 
-public class Credit extends Transaction implements Payment {
+public class Credit extends Transaction {
 	
 	private String cardNumber;
 	private String cvc;
