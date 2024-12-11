@@ -105,7 +105,7 @@ public class MainMenu {
                 	hotelMenu.displayYourOrder();
                 	break;
                 case 4:
-                    System.out.println("Returning to the main menu...");
+                    System.out.println("Thank you for using BeeHotel...");
                     return;
                 default:
                     System.out.println("Invalid choice. Please try again.");

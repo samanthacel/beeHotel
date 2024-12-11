@@ -21,9 +21,9 @@ public class Credit extends Transaction {
 		System.out.println("\n\n");
 		
 		System.out.println("Price = " + room.getPrice());
-		Transaction credit = new Transaction();
-		transactions.add(credit);
-		System.out.println("Transaction ID = " + super.getTransactionId());
+		this.setTransactionId();
+		transactions.add(this);
+		System.out.println("Transaction ID = " + this.getTransactionId());
 		
 		System.out.print("Confirm payment? [Y|N]: ");
 		String confirmed = MainMenu.sc.nextLine();

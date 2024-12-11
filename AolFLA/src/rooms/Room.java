@@ -28,8 +28,6 @@ public abstract class Room implements Cloneable {
 		this.roomId = roomId;
 	}
 	
-	
-
 	public void setFacility(String facility) {
 		this.facility = facility;
 	}
@@ -80,7 +78,7 @@ public abstract class Room implements Cloneable {
 	public void displayRoomDetails() {
         System.out.println("Room ID: " + roomId);
         System.out.println("Room Type: " + type);
-        System.out.println("Features: " + facility);
+        System.out.println("Facilities: " + facility);
         System.out.println("Price: Rp" + price + " per night");
         System.out.println("Availability: " + (availability ? "Available" : "Not Available"));
     }
@@ -97,7 +95,7 @@ public abstract class Room implements Cloneable {
 	public void displayBookedRooms() {
 		System.out.println("Room ID: " + roomId);
         System.out.println("Room Type: " + type);
-        System.out.println("Features: " + facility);
+        System.out.println("Facilities: " + facility);
         System.out.println("Price: Rp" + price + " per night");
         System.out.println("Booking date : "+ startDate + " until " + endDate);
 	}

@@ -11,7 +11,7 @@ public class Transaction implements Payment {
 	private String payment;
 	private static int counter = 1;
 	
-	public void setTransactionId(String transactionId) {
+	public void setTransactionId() {
 		this.transactionId = String.format("T%03d", counter++);
 	}
 
@@ -25,7 +25,6 @@ public class Transaction implements Payment {
 
 	@Override
 	public void pay(Room room) {
-		// TODO Auto-generated method stub
 		
 	}
 

@@ -12,9 +12,12 @@ public class Gopay extends Transaction {
 		System.out.print("Enter your phone number: ");
 		phoneNumber = MainMenu.sc.nextLine();
 		
-		Transaction gopay = new Transaction();
-		transactions.add(gopay);
-		System.out.println("Transaction ID = " + super.getTransactionId());
+		System.out.println("\n\n");
+		
+		System.out.println("Price = " + room.getPrice());
+		this.setTransactionId();
+		transactions.add(this);
+		System.out.println("Transaction ID = " + this.getTransactionId());
 		
 		System.out.print("Confirm payment? [Y|N]: ");
 		String confirmed = MainMenu.sc.nextLine();
