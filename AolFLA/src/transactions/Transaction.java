@@ -25,7 +25,6 @@ public class Transaction implements Payment {
 
 	@Override
 	public void pay(Room room) {
-		
 	}
 
 }
