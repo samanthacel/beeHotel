@@ -86,7 +86,7 @@ public class HotelMenu {
         for (Room room : rooms) {
             if (room.getRoomId().equalsIgnoreCase(roomId)) {
                 if (!room.isAvailable()) {
-                    System.out.println("Room " + roomId + " is already booked.");
+                    System.out.println("Room " + roomId + " is not available.");
                     return;
                 }
                 payRoom(room, payment);
